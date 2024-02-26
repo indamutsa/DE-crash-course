@@ -10,7 +10,7 @@ docker pull postgres
 docker scout quickview postgres
 ```
 
-![alt text](images/inspection.png)
+![alt text](../images/inspection.png)
 
 We can create a db and getting into the container to check the db.
 
@@ -369,7 +369,7 @@ ORDER BY
     f.film_id;
 ```
 
-![alt text](images/inner-join.png)
+![alt text](../images/inner-join.png)
 
 - Left join with Alias
   For this to make sense, we need to add more data to the films table.
@@ -394,7 +394,7 @@ ORDER BY
     f.film_id;
 ```
 
-![alt text](images/left-join.png)
+![alt text](../images/left-join.png)
 
 To make sure that the data is consistent, we can add a constraint to the actors table.
 
@@ -407,7 +407,7 @@ INSERT INTO film_actors (film_id, actor_id) VALUES (21, 21), (21, 22);
 ```
 
 Now every row is consistent and populated.
-![alt text](images/left-join-populated.png)
+![alt text](../images/left-join-populated.png)
 
 - Union
 
@@ -515,3 +515,17 @@ WHERE film_id = ANY
  FROM film_actors
  WHERE actor_id = 1);
 ```
+
+<!--
+Remaining topics:
+- Delete
+- Update
+- Alter Table
+- Subquery with ALL
+- Triggers
+- Indexes
+- Transactions
+- User Management
+- Backup and Restore
+- Performance Tuning
+ -->

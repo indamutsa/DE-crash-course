@@ -29,7 +29,7 @@ We will need docker to run the environment. We will use docker-compose to run th
 
 SQL stands for Structured Query Language. It is a standard language for accessing and manipulating databases. It is used to create and manage databases, as well as to query and update data. It is a powerful and flexible language that is widely used in the field of data engineering.
 
-[SQL](/sql-crash-course/sql.md)
+[SQL](/0_sql-crash-course/sql.md)
 
 ## Data Pipeline
 
@@ -42,4 +42,10 @@ A data pipeline is a series of data processing elements that are connected in se
 - Data Storage
 - Data Analysis
 
-[Data Pipeline](elt/data-pipeline.md)
+[Data Pipeline](1_basic-elt/data-pipeline.md)
+
+## DBT (Data Build Tool)
+
+DBT is a command-line tool that enables data analysts and engineers to transform data in their warehouse more effectively. It is a powerful tool for building and managing data pipelines.
+
+[DBT](2_dbt/dbt.md)
