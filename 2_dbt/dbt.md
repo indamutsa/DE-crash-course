@@ -97,3 +97,16 @@ from source_data
 
 -- where id is not null
 ```
+
+Once the models are created, even macros are integrated into the models, we can run cluster against the models.
+
+```bash
+docker compose down -v --rmi all # To make sure it can start from scratch with clean slate
+docker compose up
+```
+
+Get in destination container and run the dbt commands.
+
+```bash
+docker exec -it destination_postgres psql -U postgres -d destination_db
+```

@@ -42,7 +42,7 @@ models:
           - not_null
       - name: name
         description: "First name of the actor."
-        tests:
+        tests: []
 
 
   - name: film_actors
@@ -84,6 +84,8 @@ models:
 
       - name: rating
         description: "The MPAA rating of the film."
+        tests:
+          - not_null
 
       - name: user_rating
         description: "The average user rating for the film."
