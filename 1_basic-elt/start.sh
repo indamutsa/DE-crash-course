@@ -1,3 +1,3 @@
 cron &
 
-python3 /app/pipline.py
+python3 /app/pipeline.py

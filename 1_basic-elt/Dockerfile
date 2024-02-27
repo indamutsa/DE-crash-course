@@ -19,7 +19,8 @@ WORKDIR /app
 COPY start.sh .
 COPY pipeline.py .
 
-# Setting Up the Cron Job
+# Setting Up the Cron Job each minute
+# RUN echo "* * * * * /app/pipeline.sh" | crontab -
 RUN echo "0 0 * * * /app/pipeline.sh" | crontab -
 
 # Set the default command to run the ELT pipeline script
