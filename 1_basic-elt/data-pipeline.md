@@ -11,31 +11,30 @@ We have set up the environment and we are ready to start building our data pipel
 
 ```bash
 cd elt
-docker-compose up
+docker compose up
 
 # To take down the environment
-docker-compose down
+docker compose down
 
 # To take down the environment and remove the volumes
-docker-compose down -v
+docker compose down -v
 
 # To take down the environment and remove the images
-docker-compose down --rmi all
+docker compose down --rmi all
 
 # To take down the environment and remove the images and volumes
-docker-compose down -v --rmi all
+docker compose down -v --rmi all
 
-# To take down the environment and remove the images and volumes and rebuild the images
-docker-compose down -v --rmi all --build
+# To take down the environment and remove the images and volumes docker compose down -v --rmi all
 
-# To take down the environment and remove the images and volumes and rebuild the images and start the environment
-docker-compose down -v --rmi all --build && docker-compose up
+# To take down the environment and remove the images and volumes and start the environment
+docker compose down -v --rmi all && docker compose up
 
-# To take down the environment and remove the images and volumes and rebuild the images and start the environment in the background
-docker-compose down -v --rmi all --build && docker-compose up -d
+# To take down the environment and remove the images and volumes and start the environment in the background
+docker compose down -v --rmi all && docker compose up -d
 
-# To take down the environment and remove the images and volumes and rebuild the images and start the environment in the background and follow the logs
-docker-compose down -v --rmi all --build && docker-compose up -d && docker-compose logs -f
+# To take down the environment and remove the images and volumes and start the environment in the background and follow the logs
+docker compose down -v --rmi all && docker compose up -d && docker compose logs -f
 
 # ---
 # We can use docker to take down images, volumes, containers, and networks

@@ -2,6 +2,7 @@ version: "3"
 
 services:
   source_postgres:
+    container_name: source_postgres
     image: postgres:16.2
     ports:
       - "5433:5432"
@@ -15,6 +16,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql # We copy the init.sql file to the container, so that it's executed when the container starts
 
   destination_postgres: # Destination database can be called data warehouse after the ELT process
+    container_name: destination_postgres
     image: postgres:16.2
     ports:
       - "5434:5432"
@@ -26,6 +28,7 @@ services:
       POSTGRES_PASSWORD: secret
 
   elt_script:
+    container_name: elt_script
     build:
       context: . # Directory containing the Dockerfile and pipeline.py
       dockerfile: Dockerfile # Name of the Dockerfile, if it's something other than "Dockerfile", specify here
@@ -35,6 +38,31 @@ services:
     depends_on:
       - source_postgres
       - destination_postgres
+
+  dbt:
+    container_name: dbt
+    image: ghcr.io/dbt-labs/dbt-postgres:1.5.8
+    platform: linux/amd64
+    command:
+      [
+        "run",
+        "--profiles-dir",
+        "/root",
+        "--project-dir",
+        "/dbt",
+        "--full-refresh",
+      ]
+    networks:
+      - elt_network
+    volumes:
+      - ../2_dbt/custom_postgres:/dbt
+      - ~/.dbt:/root
+    depends_on:
+      - elt_script
+    restart: on-failure
+    environment:
+      DBT_PROFILE: default
+      DBT_TARGET: dev
 
 networks:
   elt_network:
