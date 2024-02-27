@@ -11,10 +11,16 @@ RUN apt-get update && apt-get install -y gnupg2 lsb-release && \
 RUN apt-get update
 
 # Install the specific version of PostgreSQL client
-RUN apt-get install -y postgresql-client-16
+RUN apt-get install -y postgresql-client-16 cron
+
+WORKDIR /app
 
 # Copy the ELT pipeline script 
+COPY start.sh .
 COPY pipeline.py .
+
+# Setting Up the Cron Job
+RUN echo "0 0 * * * /app/pipeline.sh" | crontab -
 
 # Set the default command to run the ELT pipeline script
 CMD ["python", "pipeline.py"]
